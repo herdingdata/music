@@ -13,12 +13,11 @@ class Note:
     """
     C4 is middle C; C1 is the lowest C
     """
-
     def __init__(self, letter: str, index: int):
-        if letter not in ["A", "B", "C", "D", "E", "F", "G"]:
-            raise ValueError(f"invalid note:{letter}")
+        if letter not in ['A', 'B', 'C', 'D', 'E', 'F', 'G']:
+            raise ValueError(f'invalid note:{letter}')
         if index > 8:
-            raise ValueError(f"invalid index:{index}")
+            raise ValueError(f'invalid index:{index}')
         self.letter = letter
         self.index = index
 
@@ -32,11 +31,11 @@ class Note:
         return not self.__eq__(other)
 
     def __repr__(self):
-        return f"Note({self.letter}{self.index})"
+        return f'Note({self.letter}{self.index})'
 
 
 class Staff(abc.ABC):
-    def __init__(self, note: Note = None):
+    def __init__(self, note: Note=None):
         self.note = note
 
     # def __repr__(self):
@@ -67,23 +66,23 @@ class Staff(abc.ABC):
             rows.append(self._get_staff_row(row_num, self.note))
         # reverse rows so that we can append them from top to bottom
         rows.reverse()
-        return "\n".join(rows)
+        return '\n'.join(rows)
 
     def _get_staff_row(self, row_num: int, note: Note) -> str:
         line_char = self._get_row_char(row_num)
         if note is None:
             return line_char * 3
         if self._does_this_row_need_a_note(row_num, self.note):
-            return line_char + "O" + line_char
+            return line_char + 'O' + line_char
         return line_char * 3
 
     def _get_row_char(self, row_num: int) -> str:
         """decide whether it's a - row or a space row"""
         # rownum 0 is the bottom row of the staff
         if row_num % 2 == 0:
-            line_char = "-"
+            line_char = '-'
         else:
-            line_char = " "
+            line_char = ' '
             # rows.append(line_char + 'O' + line_char)
         return line_char
 
@@ -101,7 +100,7 @@ class Staff(abc.ABC):
 class TrebleStaff(Staff):
     @property
     def base_note(self):
-        return Note("C", 5)
+        return Note('C', 5)
 
     @property
     def base_index(self):
