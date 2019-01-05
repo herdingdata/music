@@ -13,8 +13,11 @@ class Note:
     """
     C4 is middle C; C1 is the lowest C
     """
+    valid_letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
+
     def __init__(self, letter: str, index: int):
-        if letter not in ['A', 'B', 'C', 'D', 'E', 'F', 'G']:
+        letter = letter.upper()
+        if letter not in self.valid_letters:
             raise ValueError(f'invalid note:{letter}')
         if index > 8:
             raise ValueError(f'invalid index:{index}')
@@ -23,7 +26,7 @@ class Note:
 
     def __eq__(self, other):
         if isinstance(other, self.__class__):
-            return self.letter == other.letter and self.index == other.index
+            return self.numeric_value == other.numeric_value
         else:
             return False
 
@@ -32,6 +35,30 @@ class Note:
 
     def __repr__(self):
         return f'Note({self.letter}{self.index})'
+
+    def __add__(self, other):
+        if not isinstance(other, Note):
+            raise ValueError(f'two Notes may be added together, '
+                             f'but you tried to add a Note with a {type(other)}')
+        return self.numeric_value + other.numeric_value
+
+    def __sub__(self, other):
+        if not isinstance(other, Note):
+            raise ValueError(f'two Notes may be subtracted from one another, '
+                             f'but you tried to subtract a {type(other)} from a Note')
+        return self.numeric_value - other.numeric_value
+
+    @property
+    def numeric_value(self):
+        """
+        with A1 as 0, what number is this note on the scale?
+        Just counting whole notes; flats and sharps are excluded
+        In other words, counting the white keys of a piano starting from 0
+        """
+        values_within_set = dict(zip(self.valid_letters, range(6)))
+        value_of_corresponding_a = (self.index * 7) - 7
+        value_of_note_within_set = values_within_set[self.letter]
+        return value_of_corresponding_a + value_of_note_within_set
 
 
 class Staff(abc.ABC):
@@ -57,6 +84,17 @@ class Staff(abc.ABC):
         what's the row upon which the `base_note` appears
         the bottom line of the staff is 0, top line is 8
         notes can be <0 and >8
+
+        e.g. the indices look like this on a staff:
+        --- 8
+            7
+        --- 6
+            5
+        --- 4
+            3
+        --- 2
+            1
+        --- 0
         """
         pass
 
@@ -91,7 +129,7 @@ class Staff(abc.ABC):
         #     print('hi')
         if row_num == self.base_index and note == self.base_note:
             return True
-        if row_num
+        # if row_num
 
     @property
     def display_as(self):
@@ -101,8 +139,8 @@ class Staff(abc.ABC):
 class TrebleStaff(Staff):
     @property
     def base_note(self):
-        return Note('C', 5)
+        return Note('G', 4)  # crosses line 2 of 5 from the bottom
 
     @property
     def base_index(self):
-        return 5
+        return 2
