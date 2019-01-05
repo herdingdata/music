@@ -58,18 +58,41 @@ def test_Note__addition__a1_plus_something_invalid__raises_ValueError():
     note_1 = m.Note('A', 1)
     note_2 = 'not a note'
 
-    with pytest.raises(ValueError):
-        note_2 + note_1
+    with pytest.raises(TypeError):
+        note_1 + note_2
 
 
-def test_Note__addition__a1_plus_something_invalid__raises_ValueError():
+def test_Note__addition__a1_subtract_something_invalid__raises_ValueError():
     note_1 = 'not a note'
     note_2 = m.Note('A', 2)
 
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         note_2 - note_1
 
 # Staff
+def test_TrebleStaff__row_indices__return_expected():
+    # Arrange
+    expected_row_indices = {
+        0: 25,
+        1: 26,
+        2: 27,
+        3: 28,
+        4: 29,
+        5: 30,
+        6: 31,
+        7: 32,
+        8: 33
+    }
+    note = m.Note('C', 1)  # doesn't matter here
+    staff = m.TrebleStaff(note)
+
+    # Act
+    result_row_indices = staff.row_indices
+
+    # Assert
+    assert result_row_indices == expected_row_indices
+
+
 def test_TrebleStaff__init__C5__returns_expected():
     # Arrange
     letter = 'C'
@@ -95,7 +118,7 @@ def test_TrebleStaff__init__C5__returns_expected():
 
 def test_TrebleStaff__init__E5__returns_expected():
     # Arrange
-    letter = 'C'
+    letter = 'E'
     index = 5
     expected_note = \
         "---\n" \

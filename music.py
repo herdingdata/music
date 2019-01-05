@@ -38,13 +38,13 @@ class Note:
 
     def __add__(self, other):
         if not isinstance(other, Note):
-            raise ValueError(f'two Notes may be added together, '
+            raise TypeError(f'two Notes may be added together, '
                              f'but you tried to add a Note with a {type(other)}')
         return self.numeric_value + other.numeric_value
 
     def __sub__(self, other):
         if not isinstance(other, Note):
-            raise ValueError(f'two Notes may be subtracted from one another, '
+            raise TypeError(f'two Notes may be subtracted from one another, '
                              f'but you tried to subtract a {type(other)} from a Note')
         return self.numeric_value - other.numeric_value
 
@@ -55,13 +55,15 @@ class Note:
         Just counting whole notes; flats and sharps are excluded
         In other words, counting the white keys of a piano starting from 0
         """
-        values_within_set = dict(zip(self.valid_letters, range(6)))
+        values_within_set = dict(zip(self.valid_letters, range(7)))
         value_of_corresponding_a = (self.index * 7) - 7
         value_of_note_within_set = values_within_set[self.letter]
         return value_of_corresponding_a + value_of_note_within_set
 
 
 class Staff(abc.ABC):
+    _row_indices = None
+
     def __init__(self, note: Note=None):
         self.note = note
 
@@ -79,13 +81,13 @@ class Staff(abc.ABC):
 
     @property
     @abc.abstractmethod
-    def base_index(self) -> int:
+    def base_rowindex(self) -> int:
         """
         what's the row upon which the `base_note` appears
         the bottom line of the staff is 0, top line is 8
         notes can be <0 and >8
 
-        e.g. the indices look like this on a staff:
+        e.g. the row indices look like this on a staff:
         --- 8
             7
         --- 6
@@ -97,6 +99,16 @@ class Staff(abc.ABC):
         --- 0
         """
         pass
+
+    @property
+    def row_indices(self):
+        """:return: {row_index: numeric_value of the note that occupies it}"""
+        if self._row_indices is None:
+            self._row_indices = {}
+            for row_index in range(9):
+                self._row_indices[row_index] = self.base_note.numeric_value \
+                                               - self.base_rowindex + row_index
+        return self._row_indices
 
     def generate_staff(self) -> str:
         rows = []
@@ -125,15 +137,12 @@ class Staff(abc.ABC):
         return line_char
 
     def _does_this_row_need_a_note(self, row_num: int, note: Note) -> bool:
-        # if row_num == 5:
-        #     print('hi')
-        if row_num == self.base_index and note == self.base_note:
-            return True
-        # if row_num
+        return self.row_indices[row_num] == note.numeric_value
 
     @property
     def display_as(self):
         return self.generate_staff()
+
 
 
 class TrebleStaff(Staff):
@@ -142,5 +151,5 @@ class TrebleStaff(Staff):
         return Note('G', 4)  # crosses line 2 of 5 from the bottom
 
     @property
-    def base_index(self):
+    def base_rowindex(self):
         return 2
