@@ -160,6 +160,29 @@ def test_TrebleStaff__init__G4__returns_expected():
 
     # Assert
     assert staff.display_as == expected_note
+
+
+def test_BassStaff__init__F3__returns_expected():
+    # Arrange
+    letter = 'F'
+    index = 3
+    expected_note = \
+        "---\n" \
+        "   \n" \
+        "-O-\n" \
+        "   \n" \
+        "---\n" \
+        "   \n" \
+        "---\n" \
+        "   \n" \
+        "---"
+    note = m.Note(letter, index)
+
+    # Act
+    staff = m.BassStaff(note)
+
+    # Assert
+    assert staff.display_as == expected_note
 #
 # def test_TrebleStaff_generate_staff__no_notes__returns_empty():
 #     # Arrange

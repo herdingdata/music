@@ -64,6 +64,12 @@ class Note:
 class Staff(abc.ABC):
     _row_indices = None
 
+    @property
+    @abc.abstractmethod
+    def clef_symbol(self):
+        """here we expect something resembling ascii art for the start of the row"""
+        pass
+
     def __init__(self, note: Note=None):
         self.note = note
 
@@ -144,8 +150,20 @@ class Staff(abc.ABC):
         return self.generate_staff()
 
 
-
 class TrebleStaff(Staff):
+    @property
+    def clef_symbol(self):
+        return \
+            r"---|\----\n" \
+            r"   ||    \n" \
+            r"---|/----\n" \
+            r"   |     \n" \
+            r"--/|-----\n" \
+            r" /  _    \n" \
+            r"||-/-\\--\n" \
+            r"||   //  \n" \
+            r"-\\=//---\n"
+
     @property
     def base_note(self):
         return Note('G', 4)  # crosses line 2 of 5 from the bottom
@@ -153,3 +171,27 @@ class TrebleStaff(Staff):
     @property
     def base_rowindex(self):
         return 2
+
+
+class BassStaff(Staff):
+    @property
+    def clef_symbol(self):
+        return \
+            r"---------\n" \
+            r" //  \\ .\n" \
+            r"-\\--||--\n" \
+            r"     || .\n" \
+            r"-----//--\n" \
+            r"    //   \n" \
+            r"----/----\n" \
+            r"   /     \n" \
+            r"---------\n"
+
+    @property
+    def base_note(self):
+        return Note('F', 3)  # crosses line 2 of 5 from the bottom
+
+    @property
+    def base_rowindex(self):
+        return 6
+
