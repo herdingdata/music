@@ -91,6 +91,7 @@ class Staff(abc.ABC):
         #     print('hi')
         if row_num == self.base_index and note == self.base_note:
             return True
+        if row_num
 
     @property
     def display_as(self):
