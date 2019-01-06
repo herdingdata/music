@@ -200,7 +200,17 @@ class BassStaff(Staff):
         return 6
 
 
-def visualise_several_staffs(staffs: Iterable[Staff]):
+def visualise_several_notes_on_a_treble_staff(notes: Iterable[Staff]):
+    staffs = [TrebleStaff(n) for n in notes]
+    return _visualise_several_staffs(staffs)
+
+
+def visualise_several_notes_on_a_bass_staff(notes: Iterable[Staff]):
+    staffs = [BassStaff(n) for n in notes]
+    return _visualise_several_staffs(staffs)
+
+
+def _visualise_several_staffs(staffs: Iterable[Staff]):
     """
     compose the entire line from your staffs.
     Assumes all are the same e.g. a collection of TrebleStaffs or a collection of BassStaffs

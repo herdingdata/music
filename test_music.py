@@ -41,7 +41,7 @@ def test_Note__eq__note_and_something_not_a_note_arent_equal():
 
 def test_Note__repr__returns_expected():
     note = m.Note('C', 5)
-    assert note.__repr__ == 'Note(C5)'
+    assert note.__repr__() == 'Note(C5)'
 
 
 def test_Note__numeric_value__a1__equals_0():
@@ -220,10 +220,10 @@ def test__visualise_several_notes__TrebleStaff__returns_expected():
         r"||-/-\\--|--------" "\n" \
         "||   //  |        \n" \
         r"-\\=//---|------O-"
-    staffs = [m.TrebleStaff(note_1), m.TrebleStaff(note_2)]
+    notes = [note_1, note_2]
 
     # Act
-    result = m.visualise_several_staffs(staffs)
+    result = m.visualise_several_notes_on_a_treble_staff(notes)
 
     # Assert
     assert result == expected
@@ -243,10 +243,10 @@ def test__visualise_several_notes__BassStaff__returns_expected():
         "----/----|--------\n" \
         "   /     |        \n" \
         "---------|--------"
-    staffs = [m.BassStaff(note_1), m.BassStaff(note_2)]
+    notes = [note_1, note_2]
 
     # Act
-    result = m.visualise_several_staffs(staffs)
+    result = m.visualise_several_notes_on_a_bass_staff(notes)
 
     # Assert
     assert result == expected
