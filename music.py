@@ -65,17 +65,27 @@ class Note:
 class Staff(abc.ABC):
     _row_indices = None
 
-    @property
-    @abc.abstractmethod
-    def clef_symbol(self):
-        """here we expect something resembling ascii art for the start of the row"""
-        pass
-
     def __init__(self, note: Note = None):
         self.note = note
 
+    @property
+    @abc.abstractmethod
+    def clef_symbol(self) -> list:
+        """here we expect something resembling ascii art for the start of the row"""
+        pass
+
     # def __repr__(self):
     #     return self.display_as
+
+    @property
+    @abc.abstractmethod
+    def valid_notes(self) -> Iterable[Note]:
+        """
+        I've been pretty hacky so far in omitting to visualise notes above or below the staff
+        so... middle C can't be represented (yet)
+        For the time being, let's just limit what notes the quiz can generate
+        """
+        pass
 
     @property
     @abc.abstractmethod
@@ -129,10 +139,10 @@ class Staff(abc.ABC):
     def _get_staff_row(self, row_num: int, note: Note) -> str:
         line_char = self._get_row_char(row_num)
         if note is None:
-            return line_char * 3
+            return line_char * 7
         if self._does_this_row_need_a_note(row_num, self.note):
-            return line_char + 'O' + line_char
-        return line_char * 3
+            return line_char * 3 + 'O' + line_char * 3
+        return line_char * 7
 
     def _get_row_char(self, row_num: int) -> str:
         """decide whether it's a - row or a space row"""
@@ -175,6 +185,12 @@ class TrebleStaff(Staff):
     def base_rowindex(self):
         return 2
 
+    @property
+    def valid_notes(self):
+        notes = [('E', 4), ('F', 4), ('G', 4), ('A', 5), ('B', 5), ('C', 5),
+                 ('D', 5), ('E', 5), ('F', 5)]
+        return [Note(*n) for n in notes]
+
 
 class BassStaff(Staff):
     @property
@@ -199,13 +215,19 @@ class BassStaff(Staff):
     def base_rowindex(self):
         return 6
 
+    @property
+    def valid_notes(self):
+        notes = [('G', 2), ('A', 3), ('B', 3), ('C', 3), ('D', 3), ('E', 3),
+                 ('F', 3), ('G', 3), ('A', 4)]
+        return [Note(*n) for n in notes]
 
-def visualise_several_notes_on_a_treble_staff(notes: Iterable[Staff]):
+
+def visualise_notes_on_a_treble_staff(notes: Iterable[Note]):
     staffs = [TrebleStaff(n) for n in notes]
     return _visualise_several_staffs(staffs)
 
 
-def visualise_several_notes_on_a_bass_staff(notes: Iterable[Staff]):
+def visualise_notes_on_a_bass_staff(notes: Iterable[Note]):
     staffs = [BassStaff(n) for n in notes]
     return _visualise_several_staffs(staffs)
 

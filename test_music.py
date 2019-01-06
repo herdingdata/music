@@ -43,7 +43,6 @@ def test_Note__repr__returns_expected():
     note = m.Note('C', 5)
     assert note.__repr__() == 'Note(C5)'
 
-
 def test_Note__numeric_value__a1__equals_0():
     note = m.Note('A', 1)
     result_val = note.numeric_value
@@ -61,20 +60,18 @@ def test_Note__numeric_value__f2__equals_12():
     result_val = note.numeric_value
     assert result_val == 12
 
+
 def test_Note__subtraction__a1_from_a2__returns_7():
     note_1 = m.Note('A', 1)
     note_2 = m.Note('A', 2)
-
     result = note_2 - note_1
-
     assert result == 7
+
 
 def test_Note__addition__a1_plus_a2__returns_7():
     note_1 = m.Note('A', 1)
     note_2 = m.Note('A', 2)
-
     result = note_2 + note_1
-
     assert result == 7
 
 def test_Note__addition__a1_plus_something_invalid__raises_ValueError():
@@ -121,15 +118,15 @@ def test_TrebleStaff__init__C5__returns_expected():
     letter = 'C'
     index = 5
     expected_note = \
-        "---\n" \
-        "   \n" \
-        "---\n" \
-        " O \n" \
-        "---\n" \
-        "   \n" \
-        "---\n" \
-        "   \n" \
-        "---"
+        "-------\n" \
+        "       \n" \
+        "-------\n" \
+        "   O   \n" \
+        "-------\n" \
+        "       \n" \
+        "-------\n" \
+        "       \n" \
+        "-------"
     note = m.Note(letter, index)
 
     # Act
@@ -144,15 +141,15 @@ def test_TrebleStaff__init__E5__returns_expected():
     letter = 'E'
     index = 5
     expected_note = \
-        "---\n" \
-        " O \n" \
-        "---\n" \
-        "   \n" \
-        "---\n" \
-        "   \n" \
-        "---\n" \
-        "   \n" \
-        "---"
+        "-------\n" \
+        "   O   \n" \
+        "-------\n" \
+        "       \n" \
+        "-------\n" \
+        "       \n" \
+        "-------\n" \
+        "       \n" \
+        "-------"
     note = m.Note(letter, index)
 
     # Act
@@ -167,15 +164,15 @@ def test_TrebleStaff__init__G4__returns_expected():
     letter = 'G'
     index = 4
     expected_note = \
-        "---\n" \
-        "   \n" \
-        "---\n" \
-        "   \n" \
-        "---\n" \
-        "   \n" \
-        "-O-\n" \
-        "   \n" \
-        "---"
+        "-------\n" \
+        "       \n" \
+        "-------\n" \
+        "       \n" \
+        "-------\n" \
+        "       \n" \
+        "---O---\n" \
+        "       \n" \
+        "-------"
     note = m.Note(letter, index)
 
     # Act
@@ -188,15 +185,15 @@ def test_TrebleStaff__init__G4__returns_expected():
 def test_TrebleStaff_generate_staff__no_notes__returns_empty():
     # Arrange
     expected_staff = \
-        "---\n" \
-        "   \n" \
-        "---\n" \
-        "   \n" \
-        "---\n" \
-        "   \n" \
-        "---\n" \
-        "   \n" \
-        "---"
+        "-------\n" \
+        "       \n" \
+        "-------\n" \
+        "       \n" \
+        "-------\n" \
+        "       \n" \
+        "-------\n" \
+        "       \n" \
+        "-------"
     staff = m.TrebleStaff(None)
 
     # Act
@@ -211,19 +208,19 @@ def test__visualise_several_notes__TrebleStaff__returns_expected():
     note_1 = m.Note('E', 5)
     note_2 = m.Note('E', 4)
     expected = \
-        "---|\----|--------\n" \
-        "   ||    |   O    \n" \
-        "---|/----|--------\n" \
-        "   |     |        \n" \
-        "--/|-----|--------\n" \
-        " /  _    |        \n" \
-        r"||-/-\\--|--------" "\n" \
-        "||   //  |        \n" \
-        r"-\\=//---|------O-"
+        "---|\----|----------------\n" \
+        "   ||    |     O          \n" \
+        "---|/----|----------------\n" \
+        "   |     |                \n" \
+        "--/|-----|----------------\n" \
+        " /  _    |                \n" \
+        r"||-/-\\--|----------------" "\n" \
+        "||   //  |                \n" \
+        r"-\\=//---|------------O---"
     notes = [note_1, note_2]
 
     # Act
-    result = m.visualise_several_notes_on_a_treble_staff(notes)
+    result = m.visualise_notes_on_a_treble_staff(notes)
 
     # Assert
     assert result == expected
@@ -234,19 +231,19 @@ def test__visualise_several_notes__BassStaff__returns_expected():
     note_1 = m.Note('F', 3)
     note_2 = m.Note('C', 3)
     expected = \
-        "---------|--------\n" \
-        r" //  \\ .|        " "\n" \
-        r"-\\--||--|---O----" "\n" \
-        "     || .|        \n" \
-        "-----//--|--------\n" \
-        "    //   |      O \n" \
-        "----/----|--------\n" \
-        "   /     |        \n" \
-        "---------|--------"
+        "---------|----------------\n" \
+        r" //  \\ .|                " "\n" \
+        r"-\\--||--|-----O----------" "\n" \
+        "     || .|                \n" \
+        "-----//--|----------------\n" \
+        "    //   |            O   \n" \
+        "----/----|----------------\n" \
+        "   /     |                \n" \
+        "---------|----------------"
     notes = [note_1, note_2]
 
     # Act
-    result = m.visualise_several_notes_on_a_bass_staff(notes)
+    result = m.visualise_notes_on_a_bass_staff(notes)
 
     # Assert
     assert result == expected
@@ -257,15 +254,15 @@ def test_BassStaff__init__F3__returns_expected():
     letter = 'F'
     index = 3
     expected_note = \
-        "---\n" \
-        "   \n" \
-        "-O-\n" \
-        "   \n" \
-        "---\n" \
-        "   \n" \
-        "---\n" \
-        "   \n" \
-        "---"
+        "-------\n" \
+        "       \n" \
+        "---O---\n" \
+        "       \n" \
+        "-------\n" \
+        "       \n" \
+        "-------\n" \
+        "       \n" \
+        "-------"
     note = m.Note(letter, index)
 
     # Act
