@@ -21,6 +21,29 @@ def test_Note__init__invalid_index__raises_ValueError():
         note = m.Note('A', invalid_index)
 
 
+def test_Note__ne__two_unequal_notes_arent_equal():
+    note1 = m.Note('C', 1)
+    note2 = m.Note('C', 2)
+    assert note1 != note2
+
+
+def test_Note__eq__two_equal_notes_are_equal():
+    note1 = m.Note('C', 1)
+    note2 = m.Note('C', 1)
+    assert note1 == note2
+
+
+def test_Note__eq__note_and_something_not_a_note_arent_equal():
+    note1 = m.Note('C', 1)
+    note2 = 'not a note'
+    assert note1 != note2
+
+
+def test_Note__repr__returns_expected():
+    note = m.Note('C', 5)
+    assert note.__repr__ == 'Note(C5)'
+
+
 def test_Note__numeric_value__a1__equals_0():
     note = m.Note('A', 1)
     result_val = note.numeric_value
