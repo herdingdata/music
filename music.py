@@ -7,6 +7,7 @@ each note is 3sp and 3 rows
 ---
 """
 import abc
+from typing import Iterable
 
 
 class Note:
@@ -70,7 +71,7 @@ class Staff(abc.ABC):
         """here we expect something resembling ascii art for the start of the row"""
         pass
 
-    def __init__(self, note: Note=None):
+    def __init__(self, note: Note = None):
         self.note = note
 
     # def __repr__(self):
@@ -116,13 +117,14 @@ class Staff(abc.ABC):
                                                - self.base_rowindex + row_index
         return self._row_indices
 
-    def generate_staff(self) -> str:
+    def generate_staff(self) -> list:
+        """returns a list of rows starting from the top"""
         rows = []
         for row_num in range(0, 9):
             rows.append(self._get_staff_row(row_num, self.note))
         # reverse rows so that we can append them from top to bottom
         rows.reverse()
-        return '\n'.join(rows)
+        return rows
 
     def _get_staff_row(self, row_num: int, note: Note) -> str:
         line_char = self._get_row_char(row_num)
@@ -147,22 +149,23 @@ class Staff(abc.ABC):
 
     @property
     def display_as(self):
-        return self.generate_staff()
+        return '\n'.join([row for row in self.generate_staff()])
 
 
 class TrebleStaff(Staff):
     @property
     def clef_symbol(self):
-        return \
-            r"---|\----\n" \
-            r"   ||    \n" \
-            r"---|/----\n" \
-            r"   |     \n" \
-            r"--/|-----\n" \
-            r" /  _    \n" \
-            r"||-/-\\--\n" \
-            r"||   //  \n" \
-            r"-\\=//---\n"
+        return [
+            r"---|\----|--",
+            r"   ||    |  ",
+            r"---|/----|--",
+            r"   |     |  ",
+            r"--/|-----|--",
+            r" /  _    |  ",
+            r"||-/-\\--|--",
+            r"||   //  |  ",
+            r"-\\=//---|--"
+        ]
 
     @property
     def base_note(self):
@@ -176,16 +179,17 @@ class TrebleStaff(Staff):
 class BassStaff(Staff):
     @property
     def clef_symbol(self):
-        return \
-            r"---------\n" \
-            r" //  \\ .\n" \
-            r"-\\--||--\n" \
-            r"     || .\n" \
-            r"-----//--\n" \
-            r"    //   \n" \
-            r"----/----\n" \
-            r"   /     \n" \
-            r"---------\n"
+        return [
+            r"---------|--",
+            r" //  \\ .|  ",
+            r"-\\--||--|--",
+            r"     || .|  ",
+            r"-----//--|--",
+            r"    //   |  ",
+            r"----/----|--",
+            r"   /     |  ",
+            r"---------|--"
+        ]
 
     @property
     def base_note(self):
@@ -195,3 +199,18 @@ class BassStaff(Staff):
     def base_rowindex(self):
         return 6
 
+
+def visualise_several_staffs(staffs: Iterable[Staff]):
+    """
+    compose the entire line from your staffs.
+    Assumes all are the same e.g. a collection of TrebleStaffs or a collection of BassStaffs
+    If you pass a combination then it will just be wrong.
+    """
+    rows_to_return = ['', '', '', '', '', '', '', '', '']
+    # first get a list of lists, each of which is 9 rows long
+    items_to_display = [staffs[0].clef_symbol] + [s.generate_staff() for s in staffs]
+    # here we break convention because row_num 0 is the top
+    for row_num in range(9):
+        for item in items_to_display:
+            rows_to_return[row_num] = rows_to_return[row_num] + item[row_num]
+    return '\n'.join(rows_to_return)

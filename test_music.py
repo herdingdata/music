@@ -162,6 +162,73 @@ def test_TrebleStaff__init__G4__returns_expected():
     assert staff.display_as == expected_note
 
 
+def test_TrebleStaff_generate_staff__no_notes__returns_empty():
+    # Arrange
+    expected_staff = \
+        "---\n" \
+        "   \n" \
+        "---\n" \
+        "   \n" \
+        "---\n" \
+        "   \n" \
+        "---\n" \
+        "   \n" \
+        "---"
+    staff = m.TrebleStaff(None)
+
+    # Act
+    staff_repr = staff.display_as
+
+    # Assert
+    assert staff_repr == expected_staff
+
+
+def test__visualise_several_notes__TrebleStaff__returns_expected():
+    # Arrange
+    note_1 = m.Note('E', 5)
+    note_2 = m.Note('E', 4)
+    expected = \
+        "---|\----|--------\n" \
+        "   ||    |   O    \n" \
+        "---|/----|--------\n" \
+        "   |     |        \n" \
+        "--/|-----|--------\n" \
+        " /  _    |        \n" \
+        r"||-/-\\--|--------" "\n" \
+        "||   //  |        \n" \
+        r"-\\=//---|------O-"
+    staffs = [m.TrebleStaff(note_1), m.TrebleStaff(note_2)]
+
+    # Act
+    result = m.visualise_several_staffs(staffs)
+
+    # Assert
+    assert result == expected
+
+
+def test__visualise_several_notes__BassStaff__returns_expected():
+    # Arrange
+    note_1 = m.Note('F', 3)
+    note_2 = m.Note('C', 3)
+    expected = \
+        "---------|--------\n" \
+        r" //  \\ .|        " "\n" \
+        r"-\\--||--|---O----" "\n" \
+        "     || .|        \n" \
+        "-----//--|--------\n" \
+        "    //   |      O \n" \
+        "----/----|--------\n" \
+        "   /     |        \n" \
+        "---------|--------"
+    staffs = [m.BassStaff(note_1), m.BassStaff(note_2)]
+
+    # Act
+    result = m.visualise_several_staffs(staffs)
+
+    # Assert
+    assert result == expected
+
+
 def test_BassStaff__init__F3__returns_expected():
     # Arrange
     letter = 'F'
@@ -183,24 +250,5 @@ def test_BassStaff__init__F3__returns_expected():
 
     # Assert
     assert staff.display_as == expected_note
-#
-# def test_TrebleStaff_generate_staff__no_notes__returns_empty():
-#     # Arrange
-#     expected_staff = \
-#         "---\n" \
-#         "   \n" \
-#         "---\n" \
-#         "   \n" \
-#         "---\n" \
-#         "   \n" \
-#         "---\n" \
-#         "   \n" \
-#         "---"
-#     staff = m.TrebleStaff(None)
-#
-#     # Act
-#     staff_repr = staff.generate_staff()
-#
-#     # Assert
-#     assert staff_repr == expected_staff
+
 
