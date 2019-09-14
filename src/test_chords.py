@@ -699,35 +699,152 @@ class TestMinorSeventhChords:
         assert chord.notes == ('G', 'A#', 'D', 'F')
 
 
+# From this point we probs don't need to write out every single as we have enough confidence
 class TestFlatMajorSeventhChords:
     """
-    Eb major seventh – Eb G Bb D
     Ab major seventh – Ab C Eb G
     Bb major seventh – Bb D F A
+    Eb major seventh – Eb G Bb D
     """
-    pass
+    def test__AFlatMajorSeventh__as_expected(self):
+        chord_symbol = 'AbM7'
+        chord = Chord(chord_symbol)
 
-# TODO
-# class TestSharpMajorSeventhChords:
-#     """
-#     C# major seventh – C# E#(F) G# B#(C)
-#     F# major seventh – F# A# C# E#(F)
-#     """
-#     pass
-#
-# class TestFlatMinorSeventhChords:
-#     """
-#     Eb minor seventh – Eb Gb Bb Db
-#     Ab minor seventh – Ab Cb(B) Eb Gb
-#     Bb minor seventh – Bb Db F Ab
-#     """
-#     pass
-#
-# class TestSharpMinorSeventhChords:
-#     """
-#     C# minor seventh – C# E G# B
-#     F# minor seventh – F# A C# E
-#     """
+        assert chord.__repr__() == chord_symbol
+        assert chord.accidental == 'b'
+        assert chord.modifier == ''
+        assert chord.root == 'Ab'
+        assert chord.quality == 'major seventh'
+        assert chord.semitones == (0, 4, 7, 11)
+        assert chord.notes == ('Ab', 'C', 'Eb', 'G')
+
+    def test__BFlatMajorSeventh__as_expected(self):
+        chord_symbol = 'BbM7'
+        chord = Chord(chord_symbol)
+
+        assert chord.__repr__() == chord_symbol
+        assert chord.accidental == 'b'
+        assert chord.modifier == ''
+        assert chord.root == 'Bb'
+        assert chord.quality == 'major seventh'
+        assert chord.semitones == (0, 4, 7, 11)
+        assert chord.notes == ('Bb', 'D', 'F', 'A')
+
+    def test__EFlatMajorSeventh__as_expected(self):
+        chord_symbol = 'EbM7'
+        chord = Chord(chord_symbol)
+
+        assert chord.__repr__() == chord_symbol
+        assert chord.accidental == 'b'
+        assert chord.modifier == ''
+        assert chord.root == 'Eb'
+        assert chord.quality == 'major seventh'
+        assert chord.semitones == (0, 4, 7, 11)
+        assert chord.notes == ('Eb', 'G', 'Bb', 'D')
+
+
+class TestSharpMajorSeventhChords:
+    """
+    C# major seventh – C# E#(F) G# B#(C)
+    F# major seventh – F# A# C# E#(F)
+    """
+    def test__CSharpMajorSeventh__as_expected(self):
+        chord_symbol = 'C#M7'
+        chord = Chord(chord_symbol)
+
+        assert chord.__repr__() == chord_symbol
+        assert chord.accidental == '#'
+        assert chord.modifier == ''
+        assert chord.root == 'C#'
+        assert chord.quality == 'major seventh'
+        assert chord.semitones == (0, 4, 7, 11)
+        assert chord.notes == ('C#', 'F', 'G#', 'C')
+
+    def test__FSharpMajorSeventh__as_expected(self):
+        chord_symbol = 'F#M7'
+        chord = Chord(chord_symbol)
+
+        assert chord.__repr__() == chord_symbol
+        assert chord.accidental == '#'
+        assert chord.modifier == ''
+        assert chord.root == 'F#'
+        assert chord.quality == 'major seventh'
+        assert chord.semitones == (0, 4, 7, 11)
+        assert chord.notes == ('F#', 'A#', 'C#', 'F')
+
+
+class TestFlatMinorSeventhChords:
+    """
+    Ab minor seventh – Ab Cb(B) Eb Gb
+    Bb minor seventh – Bb Db F Ab
+    Eb minor seventh – Eb Gb Bb Db
+    """
+    def test__AFlatMinorSeventh__as_expected(self):
+        chord_symbol = 'Abm7'
+        chord = Chord(chord_symbol)
+
+        assert chord.__repr__() == chord_symbol
+        assert chord.accidental == 'b'
+        assert chord.modifier == 'm'
+        assert chord.root == 'Ab'
+        assert chord.quality == 'minor seventh'
+        assert chord.semitones == (0, 3, 7, 10)
+        assert chord.notes == ('Ab', 'B', 'Eb', 'Gb')
+
+    def test__BFlatMinorSeventh__as_expected(self):
+        chord_symbol = 'Bbm7'
+        chord = Chord(chord_symbol)
+
+        assert chord.__repr__() == chord_symbol
+        assert chord.accidental == 'b'
+        assert chord.modifier == 'm'
+        assert chord.root == 'Bb'
+        assert chord.quality == 'minor seventh'
+        assert chord.semitones == (0, 3, 7, 10)
+        assert chord.notes == ('Bb', 'Db', 'F', 'Ab')
+
+    def test__EFlatMinorSeventh__as_expected(self):
+        chord_symbol = 'Ebm7'
+        chord = Chord(chord_symbol)
+
+        assert chord.__repr__() == chord_symbol
+        assert chord.accidental == 'b'
+        assert chord.modifier == 'm'
+        assert chord.root == 'Eb'
+        assert chord.quality == 'minor seventh'
+        assert chord.semitones == (0, 3, 7, 10)
+        assert chord.notes == ('Eb', 'Gb', 'Bb', 'Db')
+
+
+class TestSharpMinorSeventhChords:
+    """
+    C# minor seventh – C# E G# B
+    F# minor seventh – F# A C# E
+    """
+    def test__CSharpMinorSeventh__as_expected(self):
+        chord_symbol = 'C#m7'
+        chord = Chord(chord_symbol)
+
+        assert chord.__repr__() == chord_symbol
+        assert chord.accidental == '#'
+        assert chord.modifier == 'm'
+        assert chord.root == 'C#'
+        assert chord.quality == 'minor seventh'
+        assert chord.semitones == (0, 3, 7, 10)
+        assert chord.notes == ('C#', 'E', 'G#', 'B')
+
+    def test__FSharpMinorSeventh__as_expected(self):
+        chord_symbol = 'F#m7'
+        chord = Chord(chord_symbol)
+
+        assert chord.__repr__() == chord_symbol
+        assert chord.accidental == '#'
+        assert chord.modifier == 'm'
+        assert chord.root == 'F#'
+        assert chord.quality == 'minor seventh'
+        assert chord.semitones == (0, 3, 7, 10)
+        assert chord.notes == ('F#', 'A', 'C#', 'E')
+
 
 class TestScales:
     def test__force_note_sequence_flat__flat_root__return_True(self):

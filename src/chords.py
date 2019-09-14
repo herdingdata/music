@@ -76,12 +76,16 @@ class Chord:
         """
         if self._semitones is None:
             if self.quality == 'major':
+                # 1st, 3rd, 5th notes of the major scale
                 self._semitones = (0, 4, 7)
             elif self.quality == 'minor':
+                # 1st, 3rd, 5th notes of the natural minor scale
                 self._semitones = (0, 3, 7)
             elif self.quality == 'major seventh':
+                # 1st, 3rd, 5th, 7th notes of the major scale
                 self._semitones = (0, 4, 7, 11)
             elif self.quality == 'minor seventh':
+                # 1st, 3rd, 5th, 7th notes of the natural minor scale
                 self._semitones = (0, 3, 7, 10)
         return self._semitones
 
