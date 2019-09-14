@@ -537,6 +537,8 @@ class TestMajorSeventhChords:
         assert chord.modifier == ''
         assert chord.root == 'A'
         assert chord.quality == 'major seventh'
+        assert chord.semitones == (0, 4, 7, 11)
+        assert chord.notes == ('A', 'C#', 'E', 'G#')
 
     def test__B7__as_expected(self):
         chord_symbol = 'BM7'
@@ -547,6 +549,8 @@ class TestMajorSeventhChords:
         assert chord.modifier == ''
         assert chord.root == 'B'
         assert chord.quality == 'major seventh'
+        assert chord.semitones == (0, 4, 7, 11)
+        assert chord.notes == ('B', 'D#', 'F#', 'A#')
 
     def test__C7__as_expected(self):
         chord_symbol = 'CM7'
@@ -557,6 +561,8 @@ class TestMajorSeventhChords:
         assert chord.modifier == ''
         assert chord.root == 'C'
         assert chord.quality == 'major seventh'
+        assert chord.semitones == (0, 4, 7, 11)
+        assert chord.notes == ('C', 'E', 'G', 'B')
 
     def test__D7__as_expected(self):
         chord_symbol = 'DM7'
@@ -567,6 +573,8 @@ class TestMajorSeventhChords:
         assert chord.modifier == ''
         assert chord.root == 'D'
         assert chord.quality == 'major seventh'
+        assert chord.semitones == (0, 4, 7, 11)
+        assert chord.notes == ('D', 'F#', 'A', 'C#')
 
     def test__E7__as_expected(self):
         chord_symbol = 'EM7'
@@ -577,6 +585,8 @@ class TestMajorSeventhChords:
         assert chord.modifier == ''
         assert chord.root == 'E'
         assert chord.quality == 'major seventh'
+        assert chord.semitones == (0, 4, 7, 11)
+        assert chord.notes == ('E', 'G#', 'B', 'D#')
 
     def test__F7__as_expected(self):
         chord_symbol = 'FM7'
@@ -587,6 +597,8 @@ class TestMajorSeventhChords:
         assert chord.modifier == ''
         assert chord.root == 'F'
         assert chord.quality == 'major seventh'
+        assert chord.semitones == (0, 4, 7, 11)
+        assert chord.notes == ('F', 'A', 'C', 'E')
 
     def test__G7__as_expected(self):
         chord_symbol = 'GM7'
@@ -597,6 +609,8 @@ class TestMajorSeventhChords:
         assert chord.modifier == ''
         assert chord.root == 'G'
         assert chord.quality == 'major seventh'
+        assert chord.semitones == (0, 4, 7, 11)
+        assert chord.notes == ('G', 'B', 'D', 'F#')
 
 
 class TestMinorSeventhChords:
@@ -609,6 +623,8 @@ class TestMinorSeventhChords:
         assert chord.modifier == 'm'
         assert chord.root == 'A'
         assert chord.quality == 'minor seventh'
+        assert chord.semitones == (0, 3, 7, 10)
+        assert chord.notes == ('A', 'C', 'E', 'G')
 
     def test__Bm7__as_expected(self):
         chord_symbol = 'Bm7'
@@ -619,6 +635,8 @@ class TestMinorSeventhChords:
         assert chord.modifier == 'm'
         assert chord.root == 'B'
         assert chord.quality == 'minor seventh'
+        assert chord.semitones == (0, 3, 7, 10)
+        assert chord.notes == ('B', 'D', 'F#', 'A')
 
     def test__Cm7__as_expected(self):
         chord_symbol = 'Cm7'
@@ -629,6 +647,8 @@ class TestMinorSeventhChords:
         assert chord.modifier == 'm'
         assert chord.root == 'C'
         assert chord.quality == 'minor seventh'
+        assert chord.semitones == (0, 3, 7, 10)
+        assert chord.notes == ('C', 'D#', 'G', 'A#')
 
     def test__Dm7__as_expected(self):
         chord_symbol = 'Dm7'
@@ -639,6 +659,8 @@ class TestMinorSeventhChords:
         assert chord.modifier == 'm'
         assert chord.root == 'D'
         assert chord.quality == 'minor seventh'
+        assert chord.semitones == (0, 3, 7, 10)
+        assert chord.notes == ('D', 'F', 'A', 'C')
 
     def test__Em7__as_expected(self):
         chord_symbol = 'Em7'
@@ -649,6 +671,8 @@ class TestMinorSeventhChords:
         assert chord.modifier == 'm'
         assert chord.root == 'E'
         assert chord.quality == 'minor seventh'
+        assert chord.semitones == (0, 3, 7, 10)
+        assert chord.notes == ('E', 'G', 'B', 'D')
 
     def test__Fm7__as_expected(self):
         chord_symbol = 'Fm7'
@@ -659,6 +683,8 @@ class TestMinorSeventhChords:
         assert chord.modifier == 'm'
         assert chord.root == 'F'
         assert chord.quality == 'minor seventh'
+        assert chord.semitones == (0, 3, 7, 10)
+        assert chord.notes == ('F', 'G#', 'C', 'D#')
 
     def test__Gm7__as_expected(self):
         chord_symbol = 'Gm7'
@@ -669,7 +695,39 @@ class TestMinorSeventhChords:
         assert chord.modifier == 'm'
         assert chord.root == 'G'
         assert chord.quality == 'minor seventh'
+        assert chord.semitones == (0, 3, 7, 10)
+        assert chord.notes == ('G', 'A#', 'D', 'F')
 
+
+class TestFlatMajorSeventhChords:
+    """
+    Eb major seventh – Eb G Bb D
+    Ab major seventh – Ab C Eb G
+    Bb major seventh – Bb D F A
+    """
+    pass
+
+# TODO
+# class TestSharpMajorSeventhChords:
+#     """
+#     C# major seventh – C# E#(F) G# B#(C)
+#     F# major seventh – F# A# C# E#(F)
+#     """
+#     pass
+#
+# class TestFlatMinorSeventhChords:
+#     """
+#     Eb minor seventh – Eb Gb Bb Db
+#     Ab minor seventh – Ab Cb(B) Eb Gb
+#     Bb minor seventh – Bb Db F Ab
+#     """
+#     pass
+#
+# class TestSharpMinorSeventhChords:
+#     """
+#     C# minor seventh – C# E G# B
+#     F# minor seventh – F# A C# E
+#     """
 
 class TestScales:
     def test__force_note_sequence_flat__flat_root__return_True(self):

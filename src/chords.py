@@ -79,6 +79,10 @@ class Chord:
                 self._semitones = (0, 4, 7)
             elif self.quality == 'minor':
                 self._semitones = (0, 3, 7)
+            elif self.quality == 'major seventh':
+                self._semitones = (0, 4, 7, 11)
+            elif self.quality == 'minor seventh':
+                self._semitones = (0, 3, 7, 10)
         return self._semitones
 
     @property
