@@ -5,21 +5,6 @@ In other words, to understand exactly which notes are in each chord
 """
 import random
 
-possible_notes = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
-possible_accidentals = [
-    '',  # normal
-    '#',  # sharp
-    'b',
-]
-possible_modifiers = [
-    '',  # major
-    'm',  # minor
-]
-possible_finishers = [
-    '',  # normal
-    # '7',
-]
-
 
 class Chord:
     def __init__(self, chord_symbol):
@@ -56,8 +41,22 @@ class Chord:
 
 
 def generate_random_chord():
+    possible_notes = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
+    possible_accidentals = [
+        '',  # normal
+        '#',  # sharp
+        'b',
+    ]
+    possible_modifiers = [
+        '',  # major
+        'm',  # minor
+    ]
+    possible_finishers = [
+        '',  # normal
+        # '7',
+    ]
     note = random.choice(possible_notes)
     accidental = random.choice(possible_accidentals)
     modifier = random.choice(possible_modifiers)
     finisher = random.choice(possible_finishers)
-    return f'{note}{accidental}{modifier}{finisher}'
+    return Chord(f'{note}{accidental}{modifier}{finisher}')
