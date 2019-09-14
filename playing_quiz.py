@@ -1,3 +1,8 @@
+"""
+This quiz will generate chord symbols for you to play.
+It's designed for when you're sitting at a piano, to practice playing
+different chords.
+"""
 import random
 from datetime import datetime as dt
 
