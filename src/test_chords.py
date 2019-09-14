@@ -850,17 +850,17 @@ class TestScales:
     def test__force_note_sequence_flat__flat_root__return_True(self):
         chord = Chord('Eb')
 
-        assert chord.force_note_sequence_flat == True
+        assert chord.force_note_sequence_flat is True
 
     def test__force_note_sequence_flat__normal_root__return_False(self):
         chord = Chord('E')
 
-        assert chord.force_note_sequence_flat == False
+        assert chord.force_note_sequence_flat is False
 
     def test__force_note_sequence_flat__sharp_root__return_False(self):
         chord = Chord('E#')
 
-        assert chord.force_note_sequence_flat == False
+        assert chord.force_note_sequence_flat is False
 
     def test__generate_note_sequence__starting_C__returns_expected(self):
         generator = generate_note_sequence(starting_note='C', force_notes_flat=False)
