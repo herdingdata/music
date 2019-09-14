@@ -25,13 +25,18 @@ class Chord:
     def __init__(self, chord_symbol):
         self.chord_symbol = chord_symbol
         if 'maj' in self.chord_symbol:
-            raise ValueError("if you're using a major chord then use a capital M")
+            raise ValueError("if you're using a major chord then use a capital M instead of "
+                             "lowercase 'maj'")
 
     def __repr__(self):
         return self.chord_symbol
 
     @property
     def accidental(self):
+        if len(self.chord_symbol) >=2:
+            second_char = self.chord_symbol[1]
+            if second_char in ('b', '#'):
+                return second_char
         return ''
 
     @property
@@ -44,7 +49,10 @@ class Chord:
 
     @property
     def quality(self):
-        return 'major' if self.modifier == '' else 'minor'
+        qual = 'major' if self.modifier == '' else 'minor'
+        if self.chord_symbol.endswith('7'):
+            qual = qual + ' seventh'
+        return qual
 
 
 def generate_random_chord():
