@@ -77,6 +77,8 @@ class Chord:
         if self._semitones is None:
             if self.quality == 'major':
                 self._semitones = (0, 4, 7)
+            elif self.quality == 'minor':
+                self._semitones = (0, 3, 7)
         return self._semitones
 
     @property

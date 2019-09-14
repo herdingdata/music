@@ -107,6 +107,8 @@ class TestMinorChords:
         assert chord.modifier == 'm'
         assert chord.root == 'A'
         assert chord.quality == 'minor'
+        assert chord.semitones == (0, 3, 7)
+        assert chord.notes == ('A', 'C', 'E')
 
     def test__Bm__as_expected(self):
         chord_symbol = 'Bm'
@@ -117,6 +119,8 @@ class TestMinorChords:
         assert chord.modifier == 'm'
         assert chord.root == 'B'
         assert chord.quality == 'minor'
+        assert chord.semitones == (0, 3, 7)
+        assert chord.notes == ('B', 'D', 'F#')
 
     def test__Cm__as_expected(self):
         chord_symbol = 'Cm'
@@ -127,6 +131,8 @@ class TestMinorChords:
         assert chord.modifier == 'm'
         assert chord.root == 'C'
         assert chord.quality == 'minor'
+        assert chord.semitones == (0, 3, 7)
+        assert chord.notes == ('C', 'D#', 'G')
 
     def test__Dm__as_expected(self):
         chord_symbol = 'Dm'
@@ -137,6 +143,8 @@ class TestMinorChords:
         assert chord.modifier == 'm'
         assert chord.root == 'D'
         assert chord.quality == 'minor'
+        assert chord.semitones == (0, 3, 7)
+        assert chord.notes == ('D', 'F', 'A')
 
     def test__Em__as_expected(self):
         chord_symbol = 'Em'
@@ -147,6 +155,8 @@ class TestMinorChords:
         assert chord.modifier == 'm'
         assert chord.root == 'E'
         assert chord.quality == 'minor'
+        assert chord.semitones == (0, 3, 7)
+        assert chord.notes == ('E', 'G', 'B')
 
     def test__Fm__as_expected(self):
         chord_symbol = 'Fm'
@@ -157,6 +167,8 @@ class TestMinorChords:
         assert chord.modifier == 'm'
         assert chord.root == 'F'
         assert chord.quality == 'minor'
+        assert chord.semitones == (0, 3, 7)
+        assert chord.notes == ('F', 'G#', 'C')
 
     def test__Gm__as_expected(self):
         chord_symbol = 'Gm'
@@ -167,6 +179,8 @@ class TestMinorChords:
         assert chord.modifier == 'm'
         assert chord.root == 'G'
         assert chord.quality == 'minor'
+        assert chord.semitones == (0, 3, 7)
+        assert chord.notes == ('G', 'A#', 'D')
 
 
 class TestMajorSharpChords:
@@ -179,6 +193,8 @@ class TestMajorSharpChords:
         assert chord.modifier == ''
         assert chord.root == chord_symbol
         assert chord.quality == 'major'
+        assert chord.semitones == (0, 4, 7)
+        assert chord.notes == ('A#', 'D', 'F')
 
     def test__Bsharp__as_expected(self):
         chord_symbol = 'B#'
@@ -189,6 +205,8 @@ class TestMajorSharpChords:
         assert chord.modifier == ''
         assert chord.root == chord_symbol
         assert chord.quality == 'major'
+        assert chord.semitones == (0, 4, 7)
+        assert chord.notes == ('C', 'E', 'G')
 
     def test__Csharp__as_expected(self):
         chord_symbol = 'C#'
@@ -199,6 +217,8 @@ class TestMajorSharpChords:
         assert chord.modifier == ''
         assert chord.root == chord_symbol
         assert chord.quality == 'major'
+        assert chord.semitones == (0, 4, 7)
+        assert chord.notes == ('C#', 'F', 'G#')
 
     def test__Dsharp__as_expected(self):
         chord_symbol = 'D#'
@@ -209,6 +229,8 @@ class TestMajorSharpChords:
         assert chord.modifier == ''
         assert chord.root == chord_symbol
         assert chord.quality == 'major'
+        assert chord.semitones == (0, 4, 7)
+        assert chord.notes == ('D#', 'G', 'A#')
 
     def test__Esharp__as_expected(self):
         chord_symbol = 'E#'
@@ -219,6 +241,8 @@ class TestMajorSharpChords:
         assert chord.modifier == ''
         assert chord.root == chord_symbol
         assert chord.quality == 'major'
+        assert chord.semitones == (0, 4, 7)
+        assert chord.notes == ('F', 'A', 'C')
 
     def test__Fsharp__as_expected(self):
         chord_symbol = 'F#'
@@ -229,6 +253,8 @@ class TestMajorSharpChords:
         assert chord.modifier == ''
         assert chord.root == chord_symbol
         assert chord.quality == 'major'
+        assert chord.semitones == (0, 4, 7)
+        assert chord.notes == ('F#', 'A#', 'C#')
 
     def test__Gsharp__as_expected(self):
         chord_symbol = 'G#'
@@ -239,9 +265,11 @@ class TestMajorSharpChords:
         assert chord.modifier == ''
         assert chord.root == chord_symbol
         assert chord.quality == 'major'
+        assert chord.semitones == (0, 4, 7)
+        assert chord.notes == ('G#', 'C', 'D#')
 
 
-class TestMinorSharpChords:
+class TestSharpMinorChords:
     def test__Asharpm__as_expected(self):
         chord_symbol = 'A#m'
         chord = Chord(chord_symbol)
@@ -251,6 +279,8 @@ class TestMinorSharpChords:
         assert chord.modifier == 'm'
         assert chord.root == 'A#'
         assert chord.quality == 'minor'
+        assert chord.semitones == (0, 3, 7)
+        assert chord.notes == ('A#', 'C#', 'F')
 
     def test__Bsharpm__as_expected(self):
         chord_symbol = 'B#m'
@@ -261,6 +291,8 @@ class TestMinorSharpChords:
         assert chord.modifier == 'm'
         assert chord.root == 'B#'
         assert chord.quality == 'minor'
+        assert chord.semitones == (0, 3, 7)
+        assert chord.notes == ('C', 'D#', 'G')
 
     def test__Csharpm__as_expected(self):
         chord_symbol = 'C#m'
@@ -271,6 +303,8 @@ class TestMinorSharpChords:
         assert chord.modifier == 'm'
         assert chord.root == 'C#'
         assert chord.quality == 'minor'
+        assert chord.semitones == (0, 3, 7)
+        assert chord.notes == ('C#', 'E', 'G#')
 
     def test__Dsharpm__as_expected(self):
         chord_symbol = 'D#m'
@@ -281,6 +315,8 @@ class TestMinorSharpChords:
         assert chord.modifier == 'm'
         assert chord.root == 'D#'
         assert chord.quality == 'minor'
+        assert chord.semitones == (0, 3, 7)
+        assert chord.notes == ('D#', 'F#', 'A#')
 
     def test__Esharpm__as_expected(self):
         chord_symbol = 'E#m'
@@ -291,6 +327,8 @@ class TestMinorSharpChords:
         assert chord.modifier == 'm'
         assert chord.root == 'E#'
         assert chord.quality == 'minor'
+        assert chord.semitones == (0, 3, 7)
+        assert chord.notes == ('F', 'G#', 'C')
 
     def test__Fsharpm__as_expected(self):
         chord_symbol = 'F#m'
@@ -301,6 +339,8 @@ class TestMinorSharpChords:
         assert chord.modifier == 'm'
         assert chord.root == 'F#'
         assert chord.quality == 'minor'
+        assert chord.semitones == (0, 3, 7)
+        assert chord.notes == ('F#', 'A', 'C#')
 
     def test__Gsharpm__as_expected(self):
         chord_symbol = 'G#m'
@@ -311,6 +351,8 @@ class TestMinorSharpChords:
         assert chord.modifier == 'm'
         assert chord.root == 'G#'
         assert chord.quality == 'minor'
+        assert chord.semitones == (0, 3, 7)
+        assert chord.notes == ('G#', 'B', 'D#')
 
 
 class TestMajorFlatChords:
@@ -323,6 +365,8 @@ class TestMajorFlatChords:
         assert chord.modifier == ''
         assert chord.root == chord_symbol
         assert chord.quality == 'major'
+        assert chord.semitones == (0, 4, 7)
+        assert chord.notes == ('Ab', 'C', 'Eb')
 
     def test__Bflat__as_expected(self):
         chord_symbol = 'Bb'
@@ -333,6 +377,8 @@ class TestMajorFlatChords:
         assert chord.modifier == ''
         assert chord.root == chord_symbol
         assert chord.quality == 'major'
+        assert chord.semitones == (0, 4, 7)
+        assert chord.notes == ('Bb', 'D', 'F')
 
     def test__Cflat__as_expected(self):
         chord_symbol = 'Cb'
@@ -343,6 +389,8 @@ class TestMajorFlatChords:
         assert chord.modifier == ''
         assert chord.root == chord_symbol
         assert chord.quality == 'major'
+        assert chord.semitones == (0, 4, 7)
+        assert chord.notes == ('B', 'Eb', 'Gb')
 
     def test__Dflat__as_expected(self):
         chord_symbol = 'Db'
@@ -353,6 +401,8 @@ class TestMajorFlatChords:
         assert chord.modifier == ''
         assert chord.root == chord_symbol
         assert chord.quality == 'major'
+        assert chord.semitones == (0, 4, 7)
+        assert chord.notes == ('Db', 'F', 'Ab')
 
     def test__Eflat__as_expected(self):
         chord_symbol = 'Eb'
@@ -363,6 +413,8 @@ class TestMajorFlatChords:
         assert chord.modifier == ''
         assert chord.root == chord_symbol
         assert chord.quality == 'major'
+        assert chord.semitones == (0, 4, 7)
+        assert chord.notes == ('Eb', 'G', 'Bb')
 
     def test__Fflat__as_expected(self):
         chord_symbol = 'Fb'
@@ -373,6 +425,8 @@ class TestMajorFlatChords:
         assert chord.modifier == ''
         assert chord.root == chord_symbol
         assert chord.quality == 'major'
+        assert chord.semitones == (0, 4, 7)
+        assert chord.notes == ('E', 'Ab', 'B')
 
     def test__Gflat__as_expected(self):
         chord_symbol = 'Gb'
@@ -383,6 +437,8 @@ class TestMajorFlatChords:
         assert chord.modifier == ''
         assert chord.root == chord_symbol
         assert chord.quality == 'major'
+        assert chord.semitones == (0, 4, 7)
+        assert chord.notes == ('Gb', 'Bb', 'Db')
 
 
 class TestMinorFlatChords:
@@ -395,6 +451,8 @@ class TestMinorFlatChords:
         assert chord.modifier == 'm'
         assert chord.root == 'Ab'
         assert chord.quality == 'minor'
+        assert chord.semitones == (0, 3, 7)
+        assert chord.notes == ('Ab', 'B', 'Eb')
 
     def test__Bflatm__as_expected(self):
         chord_symbol = 'Bbm'
@@ -405,6 +463,8 @@ class TestMinorFlatChords:
         assert chord.modifier == 'm'
         assert chord.root == 'Bb'
         assert chord.quality == 'minor'
+        assert chord.semitones == (0, 3, 7)
+        assert chord.notes == ('Bb', 'Db', 'F')
 
     def test__Cflatm__as_expected(self):
         chord_symbol = 'Cbm'
@@ -415,6 +475,8 @@ class TestMinorFlatChords:
         assert chord.modifier == 'm'
         assert chord.root == 'Cb'
         assert chord.quality == 'minor'
+        assert chord.semitones == (0, 3, 7)
+        assert chord.notes == ('B', 'D', 'Gb')
 
     def test__Dflatm__as_expected(self):
         chord_symbol = 'Dbm'
@@ -425,6 +487,8 @@ class TestMinorFlatChords:
         assert chord.modifier == 'm'
         assert chord.root == 'Db'
         assert chord.quality == 'minor'
+        assert chord.semitones == (0, 3, 7)
+        assert chord.notes == ('Db', 'E', 'Ab')
 
     def test__Eflatm__as_expected(self):
         chord_symbol = 'Ebm'
@@ -435,6 +499,8 @@ class TestMinorFlatChords:
         assert chord.modifier == 'm'
         assert chord.root == 'Eb'
         assert chord.quality == 'minor'
+        assert chord.semitones == (0, 3, 7)
+        assert chord.notes == ('Eb', 'Gb', 'Bb')
 
     def test__Fflatm__as_expected(self):
         chord_symbol = 'Fbm'
@@ -445,6 +511,8 @@ class TestMinorFlatChords:
         assert chord.modifier == 'm'
         assert chord.root == 'Fb'
         assert chord.quality == 'minor'
+        assert chord.semitones == (0, 3, 7)
+        assert chord.notes == ('E', 'G', 'B')
 
     def test__Gflatm__as_expected(self):
         chord_symbol = 'Gbm'
@@ -455,6 +523,8 @@ class TestMinorFlatChords:
         assert chord.modifier == 'm'
         assert chord.root == 'Gb'
         assert chord.quality == 'minor'
+        assert chord.semitones == (0, 3, 7)
+        assert chord.notes == ('Gb', 'A', 'Db')
 
 
 class TestMajorSeventhChords:
