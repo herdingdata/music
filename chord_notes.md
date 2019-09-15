@@ -2,6 +2,9 @@ All this sourced from https://www.piano-keyboard-guide.com/keyboard-chords.html
 
 Also some inspiration from https://www.musicnotes.com/now/tips/a-complete-guide-to-chord-symbols-in-music/
 
+https://www.howmusicreallyworks.com/S-108_Complete_Keyboard_Chord_Poster_Free_Version_E-BOOK.pdf
+
+
 Major Chords
 To form a major chord you use the root, third and fifth of the major scale. Let’s take a look at major chords in all keys as well as the notes they consist of.
 
