@@ -80,21 +80,30 @@ class Chord:
         """
         if self._semitones is None:
             if self.quality == 'major':
-                # 1st, 3rd, 5th notes of the major scale
                 self._semitones = (0, 4, 7)
             elif self.quality == 'minor':
-                # 1st, 3rd, 5th notes of the natural minor scale
                 self._semitones = (0, 3, 7)
             elif self.quality == 'major seventh':
-                # 1st, 3rd, 5th, 7th notes of the major scale
                 self._semitones = (0, 4, 7, 11)
             elif self.quality == 'minor seventh':
-                # 1st, 3rd, 5th, 7th notes of the natural minor scale
                 self._semitones = (0, 3, 7, 10)
             elif self.quality == 'dominant seventh':
-                # 1st, 3rd, 5th, flat 7th notes of the major scale
                 self._semitones = (0, 4, 7, 10)
         return self._semitones
+
+    @property
+    def hint(self):
+        hints = {
+            'major': '1st, 3rd, 5th notes of the major scale',
+            'minor': '1st, 3rd, 5th notes of the natural minor scale',
+            'major seventh': '1st, 3rd, 5th, 7th notes of the major scale',
+            'minor seventh': '1st, 3rd, 5th, 7th notes of the natural minor scale',
+            'dominant seventh': '1st, 3rd, 5th, flat 7th notes of the major scale',
+        }
+        full_hint = f'{self.chord_symbol} is a {self.quality} chord. \n' \
+                    f' It is made up of the {hints[self.quality]}. \n It has the notes ' \
+                    f'{", ".join(self.notes)}. \n\n'
+        return full_hint
 
     @property
     def force_note_sequence_flat(self):
@@ -140,18 +149,16 @@ def generate_random_chord():
     possible_accidentals = [
         '',  # normal
         '#',  # sharp
-        'b',
+        'b',  # flat
     ]
     possible_modifiers = [
         '',  # major
         'm',  # minor
-    ]
-    possible_finishers = [
-        '',  # normal
-        # '7',
+        'M7',  # major seventh
+        'm7',  # minor seventh
+        '7',  # dominant seventh
     ]
     note = random.choice(possible_notes)
     accidental = random.choice(possible_accidentals)
     modifier = random.choice(possible_modifiers)
-    finisher = random.choice(possible_finishers)
-    return Chord(f'{note}{accidental}{modifier}{finisher}')
+    return Chord(f'{note}{accidental}{modifier}')
