@@ -33,7 +33,10 @@ class Chord:
 
     @property
     def modifier(self):
-        return 'm' if 'm' in self.chord_symbol else ''
+        if 'm' in self.chord_symbol and 'dim' not in self.chord_symbol:
+            return 'm'
+        else:
+            return ''
 
     @property
     def root(self):
@@ -45,7 +48,12 @@ class Chord:
     @property
     def quality(self):
         if self._quality is None:
-            self._quality = 'major' if self.modifier == '' else 'minor'
+            if 'dim' in self.chord_symbol:
+                self._quality = 'diminuished'
+            elif self.modifier == '':
+                self._quality = 'major'
+            else:
+                self._quality = 'minor'
             if self.chord_symbol.endswith('7'):
                 if self.accidental == '' and len(self.chord_symbol) == 2 or \
                         len(self.accidental) == 1 and len(self.chord_symbol) == 3:
@@ -89,6 +97,8 @@ class Chord:
                 self._semitones = (0, 3, 7, 10)
             elif self.quality == 'dominant seventh':
                 self._semitones = (0, 4, 7, 10)
+            elif self.quality == 'diminuished':
+                self._semitones = (0, 3, 6)
         return self._semitones
 
     @property
@@ -99,6 +109,8 @@ class Chord:
             'major seventh': '1st, 3rd, 5th, 7th notes of the major scale',
             'minor seventh': '1st, 3rd, 5th, 7th notes of the natural minor scale',
             'dominant seventh': '1st, 3rd, 5th, flat 7th notes of the major scale',
+            'diminuished': '1st, flat 3rd, flat 5th notes of the major scale. '
+                     'In other words, take the corresponding minor chord and flatten the fifth.',
         }
         full_hint = f'{self.chord_symbol} is a {self.quality} chord. \n' \
                     f' It is made up of the {hints[self.quality]}. \n It has the notes ' \
@@ -108,11 +120,12 @@ class Chord:
     @property
     def force_note_sequence_flat(self):
         """
-        if we have a flat as the root then we should ensure that any
-        scale we use includes flat notes. If not then default to sharp.
+        if we have a flat as the root or a diminuished chord that's not a sharp then we should
+        ensure that any scale we use includes flat notes. If not then default to sharp.
+        There's probably a much better way of determining this.
         :return: bool
         """
-        return self.accidental == 'b'
+        return self.accidental == 'b' or (self.quality.startswith('diminuished') and self.accidental != '#')
 
 
 def generate_note_sequence(starting_note, force_notes_flat):
