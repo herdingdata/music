@@ -566,7 +566,7 @@ class TestMinorFlatChords:
 
 class TestMajorSeventhChords:
     def test__AM7__as_expected(self):
-        chord_symbol = 'AM7'
+        chord_symbol = 'AMaj7'
         chord = Chord(chord_symbol)
 
         assert chord.__repr__() == chord_symbol
@@ -578,7 +578,7 @@ class TestMajorSeventhChords:
         assert chord.notes == ('A', 'C#', 'E', 'G#')
 
     def test__BM7__as_expected(self):
-        chord_symbol = 'BM7'
+        chord_symbol = 'BMaj7'
         chord = Chord(chord_symbol)
 
         assert chord.__repr__() == chord_symbol
@@ -590,7 +590,7 @@ class TestMajorSeventhChords:
         assert chord.notes == ('B', 'D#', 'F#', 'A#')
 
     def test__CM7__as_expected(self):
-        chord_symbol = 'CM7'
+        chord_symbol = 'CMaj7'
         chord = Chord(chord_symbol)
 
         assert chord.__repr__() == chord_symbol
@@ -602,7 +602,7 @@ class TestMajorSeventhChords:
         assert chord.notes == ('C', 'E', 'G', 'B')
 
     def test__DM7__as_expected(self):
-        chord_symbol = 'DM7'
+        chord_symbol = 'DMaj7'
         chord = Chord(chord_symbol)
 
         assert chord.__repr__() == chord_symbol
@@ -614,7 +614,7 @@ class TestMajorSeventhChords:
         assert chord.notes == ('D', 'F#', 'A', 'C#')
 
     def test__EM7__as_expected(self):
-        chord_symbol = 'EM7'
+        chord_symbol = 'EMaj7'
         chord = Chord(chord_symbol)
 
         assert chord.__repr__() == chord_symbol
@@ -626,7 +626,7 @@ class TestMajorSeventhChords:
         assert chord.notes == ('E', 'G#', 'B', 'D#')
 
     def test__FM7__as_expected(self):
-        chord_symbol = 'FM7'
+        chord_symbol = 'FMaj7'
         chord = Chord(chord_symbol)
 
         assert chord.__repr__() == chord_symbol
@@ -638,7 +638,7 @@ class TestMajorSeventhChords:
         assert chord.notes == ('F', 'A', 'C', 'E')
 
     def test__GM7__as_expected(self):
-        chord_symbol = 'GM7'
+        chord_symbol = 'GMaj7'
         chord = Chord(chord_symbol)
 
         assert chord.__repr__() == chord_symbol

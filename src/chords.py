@@ -167,9 +167,10 @@ def generate_random_chord():
     possible_modifiers = [
         '',  # major
         'm',  # minor
-        'M7',  # major seventh
+        'Maj7',  # major seventh  (M7 also works, but is less explicit)
         'm7',  # minor seventh
         '7',  # dominant seventh
+        'dim',  # diminuished
     ]
     note = random.choice(possible_notes)
     accidental = random.choice(possible_accidentals)
