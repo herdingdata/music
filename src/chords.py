@@ -130,7 +130,7 @@ class Chord:
 
 def generate_note_sequence(starting_note, force_notes_flat):
     """
-    get a generator that will go through all the notes on the piano
+    get a generator that will go through all the music notes
 
     :param starting_note: where to start the sequence from
     :param force_notes_flat: the sequence should use flat notes, not sharps

@@ -1,6 +1,6 @@
 """
 This quiz will generate chord symbols for you to play.
-It's designed for when you're sitting at a piano, to practice playing
+It's designed for when you're with your instrument, to practice playing
 different chords.
 """
 import sys
@@ -39,7 +39,7 @@ def run_chord_quiz_autoproceed():
     seconds_to_guess_the_chord = 20
     seconds_with_hint = 20
     # intro
-    input("This quiz is designed for you to play along with when you are sitting at a piano.\n\n"
+    input("This quiz is designed for you to play along with when you are with your instrument.\n\n"
           "At any time you can press CTRL + C to interrupt it.\n" \
           "To start, press ENTER.")
     while 1 == 1:
