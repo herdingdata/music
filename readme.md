@@ -22,7 +22,7 @@ python reading_quiz.py
 ## Playing quiz
 
 This quiz is designed for when you're with your instrument, to practice various random chords. 
-It will automatically proceed to the next chord, but there's an option to manually proceed in the code.
+It will automatically proceed to the next chord, but there's an option to manually proceed hidden in the code.
 
 ```
 python playing_quiz.py
