@@ -528,7 +528,7 @@ class TestMinorFlatChords:
 
 
 class TestMajorSeventhChords:
-    def test__A7__as_expected(self):
+    def test__AM7__as_expected(self):
         chord_symbol = 'AM7'
         chord = Chord(chord_symbol)
 
@@ -540,7 +540,7 @@ class TestMajorSeventhChords:
         assert chord.semitones == (0, 4, 7, 11)
         assert chord.notes == ('A', 'C#', 'E', 'G#')
 
-    def test__B7__as_expected(self):
+    def test__BM7__as_expected(self):
         chord_symbol = 'BM7'
         chord = Chord(chord_symbol)
 
@@ -552,7 +552,7 @@ class TestMajorSeventhChords:
         assert chord.semitones == (0, 4, 7, 11)
         assert chord.notes == ('B', 'D#', 'F#', 'A#')
 
-    def test__C7__as_expected(self):
+    def test__CM7__as_expected(self):
         chord_symbol = 'CM7'
         chord = Chord(chord_symbol)
 
@@ -564,7 +564,7 @@ class TestMajorSeventhChords:
         assert chord.semitones == (0, 4, 7, 11)
         assert chord.notes == ('C', 'E', 'G', 'B')
 
-    def test__D7__as_expected(self):
+    def test__DM7__as_expected(self):
         chord_symbol = 'DM7'
         chord = Chord(chord_symbol)
 
@@ -576,7 +576,7 @@ class TestMajorSeventhChords:
         assert chord.semitones == (0, 4, 7, 11)
         assert chord.notes == ('D', 'F#', 'A', 'C#')
 
-    def test__E7__as_expected(self):
+    def test__EM7__as_expected(self):
         chord_symbol = 'EM7'
         chord = Chord(chord_symbol)
 
@@ -588,7 +588,7 @@ class TestMajorSeventhChords:
         assert chord.semitones == (0, 4, 7, 11)
         assert chord.notes == ('E', 'G#', 'B', 'D#')
 
-    def test__F7__as_expected(self):
+    def test__FM7__as_expected(self):
         chord_symbol = 'FM7'
         chord = Chord(chord_symbol)
 
@@ -600,7 +600,7 @@ class TestMajorSeventhChords:
         assert chord.semitones == (0, 4, 7, 11)
         assert chord.notes == ('F', 'A', 'C', 'E')
 
-    def test__G7__as_expected(self):
+    def test__GM7__as_expected(self):
         chord_symbol = 'GM7'
         chord = Chord(chord_symbol)
 
@@ -844,6 +844,174 @@ class TestSharpMinorSeventhChords:
         assert chord.quality == 'minor seventh'
         assert chord.semitones == (0, 3, 7, 10)
         assert chord.notes == ('F#', 'A', 'C#', 'E')
+
+
+class TestDominantSeventh:
+    """
+    A dominant seventh – A C# E G
+    B dominant seventh – B D# F# A
+    C dominant seventh – C E G Bb
+    D dominant seventh – D F# A C
+    E dominant seventh – E G# B D
+    F dominant seventh – F A C Eb
+    G dominant seventh – G B D F
+    """
+    def test__A7__as_expected(self):
+        chord_symbol = 'A7'
+        chord = Chord(chord_symbol)
+
+        assert chord.__repr__() == chord_symbol
+        assert chord.accidental == ''
+        assert chord.modifier == ''
+        assert chord.root == 'A'
+        assert chord.quality == 'dominant seventh'
+        assert chord.semitones == (0, 4, 7, 10)
+        assert chord.notes == ('A', 'C#', 'E', 'G')
+
+    def test__B7__as_expected(self):
+        chord_symbol = 'B7'
+        chord = Chord(chord_symbol)
+
+        assert chord.__repr__() == chord_symbol
+        assert chord.accidental == ''
+        assert chord.modifier == ''
+        assert chord.root == 'B'
+        assert chord.quality == 'dominant seventh'
+        assert chord.semitones == (0, 4, 7, 10)
+        assert chord.notes == ('B', 'D#', 'F#', 'A')
+
+    def test__C7__as_expected(self):
+        chord_symbol = 'C7'
+        chord = Chord(chord_symbol)
+
+        assert chord.__repr__() == chord_symbol
+        assert chord.accidental == ''
+        assert chord.modifier == ''
+        assert chord.root == 'C'
+        assert chord.quality == 'dominant seventh'
+        assert chord.semitones == (0, 4, 7, 10)
+        assert chord.notes == ('C', 'E', 'G', 'A#')
+
+    def test__D7__as_expected(self):
+        chord_symbol = 'D7'
+        chord = Chord(chord_symbol)
+
+        assert chord.__repr__() == chord_symbol
+        assert chord.accidental == ''
+        assert chord.modifier == ''
+        assert chord.root == 'D'
+        assert chord.quality == 'dominant seventh'
+        assert chord.semitones == (0, 4, 7, 10)
+        assert chord.notes == ('D', 'F#', 'A', 'C')
+
+    def test__E7__as_expected(self):
+        chord_symbol = 'E7'
+        chord = Chord(chord_symbol)
+
+        assert chord.__repr__() == chord_symbol
+        assert chord.accidental == ''
+        assert chord.modifier == ''
+        assert chord.root == 'E'
+        assert chord.quality == 'dominant seventh'
+        assert chord.semitones == (0, 4, 7, 10)
+        assert chord.notes == ('E', 'G#', 'B', 'D')
+
+    def test__F7__as_expected(self):
+        chord_symbol = 'F7'
+        chord = Chord(chord_symbol)
+
+        assert chord.__repr__() == chord_symbol
+        assert chord.accidental == ''
+        assert chord.modifier == ''
+        assert chord.root == 'F'
+        assert chord.quality == 'dominant seventh'
+        assert chord.semitones == (0, 4, 7, 10)
+        assert chord.notes == ('F', 'A', 'C', 'D#')
+
+    def test__G7__as_expected(self):
+        chord_symbol = 'G7'
+        chord = Chord(chord_symbol)
+
+        assert chord.__repr__() == chord_symbol
+        assert chord.accidental == ''
+        assert chord.modifier == ''
+        assert chord.root == 'G'
+        assert chord.quality == 'dominant seventh'
+        assert chord.semitones == (0, 4, 7, 10)
+        assert chord.notes == ('G', 'B', 'D', 'F')
+
+
+class TestSharpDominantSeventh:
+    """
+    C# dominant seventh – C# E#(F) G# B
+    F# dominant seventh – F# A# C# E
+    """
+    def test__CSharpDominantSeventh__as_expected(self):
+        chord_symbol = 'C#7'
+        chord = Chord(chord_symbol)
+
+        assert chord.__repr__() == chord_symbol
+        assert chord.accidental == '#'
+        assert chord.modifier == ''
+        assert chord.root == 'C#'
+        assert chord.quality == 'dominant seventh'
+        assert chord.semitones == (0, 4, 7, 10)
+        assert chord.notes == ('C#', 'F', 'G#', 'B')
+
+    def test__FSharpDominantSeventh__as_expected(self):
+        chord_symbol = 'F#7'
+        chord = Chord(chord_symbol)
+
+        assert chord.__repr__() == chord_symbol
+        assert chord.accidental == '#'
+        assert chord.modifier == ''
+        assert chord.root == 'F#'
+        assert chord.quality == 'dominant seventh'
+        assert chord.semitones == (0, 4, 7, 10)
+        assert chord.notes == ('F#', 'A#', 'C#', 'E')
+
+
+class TestFlatDominantSeventh:
+    """
+    Ab dominant seventh – Ab C Eb Gb
+    Bb dominant seventh – Bb D F Ab
+    Eb dominant seventh – Eb G Bb Db
+    """
+    def test__AFlatDominantSeventh__as_expected(self):
+        chord_symbol = 'Ab7'
+        chord = Chord(chord_symbol)
+
+        assert chord.__repr__() == chord_symbol
+        assert chord.accidental == 'b'
+        assert chord.modifier == ''
+        assert chord.root == 'Ab'
+        assert chord.quality == 'dominant seventh'
+        assert chord.semitones == (0, 4, 7, 10)
+        assert chord.notes == ('Ab', 'C', 'Eb', 'Gb')
+
+    def test__BFlatDominantSeventh__as_expected(self):
+        chord_symbol = 'Bb7'
+        chord = Chord(chord_symbol)
+
+        assert chord.__repr__() == chord_symbol
+        assert chord.accidental == 'b'
+        assert chord.modifier == ''
+        assert chord.root == 'Bb'
+        assert chord.quality == 'dominant seventh'
+        assert chord.semitones == (0, 4, 7, 10)
+        assert chord.notes == ('Bb', 'D', 'F', 'Ab')
+
+    def test__EFlatDominantSeventh__as_expected(self):
+        chord_symbol = 'Eb7'
+        chord = Chord(chord_symbol)
+
+        assert chord.__repr__() == chord_symbol
+        assert chord.accidental == 'b'
+        assert chord.modifier == ''
+        assert chord.root == 'Eb'
+        assert chord.quality == 'dominant seventh'
+        assert chord.semitones == (0, 4, 7, 10)
+        assert chord.notes == ('Eb', 'G', 'Bb', 'Db')
 
 
 class TestScales:

@@ -47,7 +47,11 @@ class Chord:
         if self._quality is None:
             self._quality = 'major' if self.modifier == '' else 'minor'
             if self.chord_symbol.endswith('7'):
-                self._quality = self._quality + ' seventh'
+                if self.accidental == '' and len(self.chord_symbol) == 2 or \
+                        len(self.accidental) == 1 and len(self.chord_symbol) == 3:
+                    self._quality = 'dominant seventh'
+                else:
+                    self._quality = self._quality + ' seventh'
         return self._quality
 
     @property
@@ -87,6 +91,9 @@ class Chord:
             elif self.quality == 'minor seventh':
                 # 1st, 3rd, 5th, 7th notes of the natural minor scale
                 self._semitones = (0, 3, 7, 10)
+            elif self.quality == 'dominant seventh':
+                # 1st, 3rd, 5th, flat 7th notes of the major scale
+                self._semitones = (0, 4, 7, 10)
         return self._semitones
 
     @property
