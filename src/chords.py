@@ -99,6 +99,8 @@ class Chord:
                 self._semitones = (0, 4, 7, 10)
             elif self.quality == 'diminuished':
                 self._semitones = (0, 3, 6)
+            elif self.quality == 'diminuished seventh':
+                self._semitones = (0, 3, 6, 9)
         return self._semitones
 
     @property
@@ -107,10 +109,15 @@ class Chord:
             'major': '1st, 3rd, 5th notes of the major scale',
             'minor': '1st, 3rd, 5th notes of the natural minor scale',
             'major seventh': '1st, 3rd, 5th, 7th notes of the major scale',
-            'minor seventh': '1st, 3rd, 5th, 7th notes of the natural minor scale',
+            'minor seventh': '1st, 3rd, 5th, 7th notes of the natural minor scale. '
+                             'In other words, the 1st, flat 3rd, 5th and flat 7th notes of the '
+                             'major scale.',
             'dominant seventh': '1st, 3rd, 5th, flat 7th notes of the major scale',
             'diminuished': '1st, flat 3rd, flat 5th notes of the major scale. '
                      'In other words, take the corresponding minor chord and flatten the fifth.',
+            'diminuished seventh': '1st, flat 3rd, flat 5th and double-flat seventh notes of the '
+                                   'major scale. In other words, take the corresponding minor '
+                                   'seventh chord and flatten both the fifth and seventh.',
         }
         full_hint = f'{self.chord_symbol} is a {self.quality} chord. \n' \
                     f' It is made up of the {hints[self.quality]}. \n It has the notes ' \
@@ -160,7 +167,7 @@ def generate_note_sequence(starting_note, force_notes_flat):
 def generate_random_chord():
     possible_notes = ('A', 'B', 'C', 'D', 'E', 'F', 'G')
     possible_accidentals = [
-        '',  # normal
+        '',  # no accidental
         '#',  # sharp
         'b',  # flat
     ]
@@ -171,6 +178,7 @@ def generate_random_chord():
         'm7',  # minor seventh
         '7',  # dominant seventh
         'dim',  # diminuished
+        'dim7',  # diminuished seventh
     ]
     note = random.choice(possible_notes)
     accidental = random.choice(possible_accidentals)
