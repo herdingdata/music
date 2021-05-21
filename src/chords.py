@@ -6,6 +6,8 @@ In other words, to understand exactly which notes are in each chord
 import random
 from itertools import cycle, islice
 
+import config
+
 
 class Chord:
     _accidental = None
@@ -158,7 +160,7 @@ def generate_note_sequence(starting_note, force_notes_flat):
     for note in cycle(possible_notes):
         if in_sequence:
             yield note
-        else: # we're looking for the start note
+        else:  # we're looking for the start note
             if note == starting_note:
                 in_sequence = True
                 yield note
@@ -166,21 +168,7 @@ def generate_note_sequence(starting_note, force_notes_flat):
 
 def generate_random_chord():
     possible_notes = ('A', 'B', 'C', 'D', 'E', 'F', 'G')
-    possible_accidentals = [
-        '',  # no accidental
-        '#',  # sharp
-        'b',  # flat
-    ]
-    possible_modifiers = [
-        '',  # major
-        'm',  # minor
-        'Maj7',  # major seventh  (M7 also works, but is less explicit)
-        'm7',  # minor seventh
-        '7',  # dominant seventh
-        'dim',  # diminuished
-        'dim7',  # diminuished seventh
-    ]
     note = random.choice(possible_notes)
-    accidental = random.choice(possible_accidentals)
-    modifier = random.choice(possible_modifiers)
+    accidental = random.choice(config.possible_accidentals)
+    modifier = random.choice(config.possible_modifiers)
     return Chord(f'{note}{accidental}{modifier}')

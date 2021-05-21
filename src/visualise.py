@@ -246,3 +246,10 @@ def _visualise_several_staffs(staffs: Iterable[Staff]):
         for item in items_to_display:
             rows_to_return[row_num] = rows_to_return[row_num] + item[row_num]
     return '\n'.join(rows_to_return)
+
+
+def visualise_notes(notes: Iterable[Note], empty_staff: Iterable[Staff]):
+    if isinstance(empty_staff, TrebleStaff):
+        print(visualise_notes_on_a_treble_staff(notes))
+    else:
+        print(visualise_notes_on_a_bass_staff(notes))

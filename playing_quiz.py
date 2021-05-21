@@ -3,18 +3,11 @@ This quiz will generate chord symbols for you to play.
 It's designed for when you're with your instrument, to practice playing
 different chords.
 """
-import sys
 from datetime import datetime as dt
-from time import sleep
 
 from src.chords import generate_random_chord
-
-
-def countdown(seconds):
-    for i in range(seconds, 0, -1):
-        sys.stdout.write(' ' + str(i))
-        sys.stdout.flush()
-        sleep(1)
+import config
+from src.utils import countdown
 
 
 def run_chord_quiz_manually_proceed():
@@ -36,8 +29,6 @@ def run_chord_quiz_autoproceed():
     """
     once started this quiz will keep going until interrupted
     """
-    seconds_to_guess_the_chord = 20
-    seconds_with_hint = 20
     # intro
     input("This quiz is designed for you to play along with when you are with your instrument.\n\n"
           "At any time you can press CTRL + C to interrupt it.\n" \
@@ -45,9 +36,9 @@ def run_chord_quiz_autoproceed():
     while 1 == 1:
         chord = generate_random_chord()
         print('\n', chord, '\n\n Hint will be shown in')
-        countdown(seconds_to_guess_the_chord)
+        countdown(config.seconds_to_guess)
         print('\n\n', chord.hint, 'Next chord will be shown in')
-        countdown(seconds_with_hint)
+        countdown(config.seconds_with_hint)
         print('\n\n\n\n')
 
 

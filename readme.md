@@ -5,7 +5,7 @@ I'm learning to play the piano.
 It's taking me some time to learn to read music. So, I decided to build a python script to help me with this.
 Later this repo evolved into a separate quiz to practice playing various things.
 
-I wrote most of this pretty smashed, so if you stumble across this then please don't judge me on my hacky coding style.
+This is hacked together in a bit of a rush, so if you stumble across this then please don't judge me on my hacky coding style.
  \*_Rick burp_\*
  
 If you find these quizzes useful, [I'd love to hear from you on twitter](https://twitter.com/messages/compose?recipient_id=21296084).
